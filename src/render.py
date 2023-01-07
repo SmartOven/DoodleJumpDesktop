@@ -1,5 +1,6 @@
 import pygame
 
+background_image = pygame.image.load("../resources/bg.png")
 display_size = (530, 830)
 half_display_size = (display_size[0] // 2, display_size[1] // 2)
 
@@ -8,7 +9,12 @@ display = pygame.display.set_mode(display_size)
 
 # Mapping coordinates to the normal coordinate system
 def map_coords(obj_size, coords):
-    return coords[0] + half_display_size[0] - obj_size[0] // 2, -coords[1] + half_display_size[1] + - obj_size[1] // 2
+    return coords[0] + half_display_size[0] - obj_size[0] // 2,\
+        -coords[1] + half_display_size[1] + - obj_size[1] // 2
+
+
+def render_background():
+    display.blit(background_image, (0, 0))
 
 
 def render(obj, coords):
