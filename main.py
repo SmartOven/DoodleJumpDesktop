@@ -37,9 +37,14 @@ if __name__ == "__main__":
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_a or event.key == pygame.K_LEFT:
-                    Player.move_left()
+                    Player.is_moving_left_now()
                 elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
-                    Player.move_right()
+                    Player.is_moving_right_now()
+            elif event.type == pygame.KEYUP:
+                if event.key == pygame.K_a or event.key == pygame.K_LEFT:
+                    Player.is_not_moving_left_now()
+                elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
+                    Player.is_not_moving_right_now()
 
         # Updating display in 200fps
         pygame.display.update()

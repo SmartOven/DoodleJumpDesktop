@@ -1,4 +1,4 @@
-horizontal_player_movement = 10
+horizontal_player_movement = 8
 vertical_player_movement = 3
 
 fps = 200
