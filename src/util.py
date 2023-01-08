@@ -15,3 +15,11 @@ class FramesCounter:
         FramesCounter.frame += 1
         if FramesCounter.frame >= fps:
             FramesCounter.frame = 0
+
+
+class Game:
+    is_running = True
+
+    @staticmethod
+    def stop():
+        Game.is_running = False

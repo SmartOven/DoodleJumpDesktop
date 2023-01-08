@@ -18,6 +18,14 @@ class Platform:
 
     def __init__(self, coords: Pair):
         self.coords = coords
+        self.hit_box = [
+            (coords.x - Platform.half_size.x, coords.x + Platform.half_size.x),  # X0, X1
+            coords.y + Platform.half_size.y                                      # Y
+        ]
+
+    def is_player_on_platform(self, player_coords: Pair, error_rate):
+        return self.hit_box[0][0] <= player_coords.x <= self.hit_box[0][1] \
+            and player_coords.y - error_rate <= self.hit_box[1] <= player_coords.y
 
     def render(self):
         render(Platform.image, Platform.size, self.coords)
@@ -46,7 +54,7 @@ class Platforms:
     platforms = bottom_floor_platforms() + n_random_platforms(current_count)
 
     @staticmethod
-    def render():
+    def update_and_render():
         Platforms.filter_and_add_new()
         for platform in Platforms.platforms:
             platform.render()

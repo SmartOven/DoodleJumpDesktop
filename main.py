@@ -1,12 +1,13 @@
 import sys
 
+import pygame.color
 from pygame.locals import *
 
 from src.parameters import fps
 from src.platform import Platforms
 from src.player import Player
 from src.render_util import *
-from src.util import FramesCounter
+from src.util import FramesCounter, Game
 
 pygame.init()
 pygame.display.set_caption("Doodle Jump")
@@ -14,11 +15,23 @@ pygame.display.set_caption("Doodle Jump")
 if __name__ == "__main__":
     # Game loop
     while True:
+        if not Game.is_running:
+            display.fill((140, 140, 140))
+            pygame.draw.line(display, (0, 0, 0), (0, 0), (100, 100))
+
+            for event in pygame.event.get():
+                if event.type == QUIT:
+                    pygame.quit()
+                    sys.exit()
+
+            pygame.display.update()
+            continue
+
         # Rendering
         render_background()
 
-        Platforms.render()
-        Player.render()
+        Platforms.update_and_render()
+        Player.update_and_render()
 
         # Events catching
         for event in pygame.event.get():
