@@ -13,10 +13,10 @@ pygame.init()
 pygame.display.set_caption("Doodle Jump")
 
 platforms = [
-    Platform(Pair(100, 100)),
-    Platform(Pair(-100, 100)),
-    Platform(Pair(100, -100)),
-    Platform(Pair(-100, -100))
+    Platform(Pair(Platform.min_x, Platform.min_y)),
+    Platform(Pair(Platform.min_x, Platform.max_y)),
+    Platform(Pair(Platform.max_x, Platform.min_y)),
+    Platform(Pair(Platform.max_x, Platform.max_y))
 ]
 
 if __name__ == "__main__":

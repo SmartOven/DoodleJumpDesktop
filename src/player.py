@@ -1,6 +1,6 @@
 import pygame
 
-from src.game_display import half_display_size
+from src.display import half_display_size
 from src.render_util import at_bottom_with_x, render
 from src.util import Pair, FramesCounter
 from src.parameters import horizontal_player_movement, vertical_player_movement, fps, half_fps
@@ -33,31 +33,11 @@ class Player:
         Player.moving_right = False
 
     @staticmethod
-    def move_left():
-        Player.coords.x -= horizontal_player_movement
-        if Player.coords.x <= -half_display_size.x - Player.half_size.x:
-            Player.coords.x = half_display_size.x
-
-    @staticmethod
-    def move_right():
-        Player.coords.x += horizontal_player_movement
-        if Player.coords.x >= half_display_size.x + Player.half_size.x:
-            Player.coords.x = -half_display_size.x
-
-    @staticmethod
-    def move_up():
-        Player.coords.y += vertical_player_movement
-
-    @staticmethod
-    def move_down():
-        Player.coords.y -= vertical_player_movement
-
-    @staticmethod
     def move():
         if Player.moving_left:
-            Player.move_left()
+            move_player_left()
         elif Player.moving_right:
-            Player.move_right()
+            move_player_right()
 
     @staticmethod
     def render():
@@ -68,6 +48,26 @@ class Player:
     @staticmethod
     def animate():
         if FramesCounter.frame < half_fps:
-            Player.move_up()
+            move_player_up()
         else:
-            Player.move_down()
+            move_player_down()
+
+
+def move_player_left():
+    Player.coords.x -= horizontal_player_movement
+    if Player.coords.x <= -half_display_size.x - Player.half_size.x:
+        Player.coords.x = half_display_size.x
+
+
+def move_player_right():
+    Player.coords.x += horizontal_player_movement
+    if Player.coords.x >= half_display_size.x + Player.half_size.x:
+        Player.coords.x = -half_display_size.x
+
+
+def move_player_up():
+    Player.coords.y += vertical_player_movement
+
+
+def move_player_down():
+    Player.coords.y -= vertical_player_movement

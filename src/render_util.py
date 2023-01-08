@@ -1,4 +1,4 @@
-from src.game_display import *
+from src.display import *
 
 
 # Mapping coordinates to the normal coordinate system

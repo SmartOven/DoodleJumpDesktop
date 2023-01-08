@@ -11,6 +11,11 @@ class Platform:
     half_size = Pair(size.x // 2, size.y // 2)
     coords = at_bottom_with_x(size, 0)
 
+    min_x = -half_display_size.x + half_size.x
+    max_x = half_display_size.x - half_size.x
+    min_y = -half_display_size.y + half_size.y
+    max_y = half_display_size.y - half_size.y
+
     def __init__(self, coords: Pair):
         self.coords = coords
 
@@ -20,10 +25,6 @@ class Platform:
 
     def render(self):
         render(Platform.image, Platform.size, self.coords)
-
-    # self.min_x = -half_display_size.x + self.half_size.x
-    # self.max_x = half_display_size.y - self.half_size.y
-    # self.min_y = -half_display_size.y + self.half_size.y
 
 
 def random_platform_coords():
