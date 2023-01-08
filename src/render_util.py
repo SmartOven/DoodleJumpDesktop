@@ -3,8 +3,8 @@ from src.display import *
 
 # Mapping coordinates to the normal coordinate system
 def map_coords(obj_size: Pair, coords: Pair):
-    return coords.x + half_display_size.x - obj_size.x // 2,\
-        -coords.y + half_display_size.y + - obj_size.y // 2
+    return coords.x + half_display_size.x - obj_size.x // 2, \
+           -coords.y + half_display_size.y + - obj_size.y // 2
 
 
 def render_background():

@@ -1,6 +1,5 @@
 import sys
 
-import pygame.color
 from pygame.locals import *
 
 from src.parameters import fps

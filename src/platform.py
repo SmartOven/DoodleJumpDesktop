@@ -20,7 +20,7 @@ class Platform:
         self.coords = coords
         self.hit_box = [
             (coords.x - Platform.half_size.x, coords.x + Platform.half_size.x),  # X0, X1
-            coords.y + Platform.half_size.y                                      # Y
+            coords.y + Platform.half_size.y  # Y
         ]
 
     def is_player_on_platform(self, player_coords: Pair, error_rate):
